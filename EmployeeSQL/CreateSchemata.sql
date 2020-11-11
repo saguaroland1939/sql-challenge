@@ -1,3 +1,4 @@
+-- Create employees table with primary key emp_no. Wait on emp_title_id foreign key.
 CREATE TABLE employees 
 (
 	emp_no VARCHAR(10),
@@ -10,6 +11,7 @@ CREATE TABLE employees
 	hire_date DATE
 );
 
+-- Create titles table with primary key title_id.
 CREATE TABLE titles 
 (
 	title_id VARCHAR (10),
@@ -17,9 +19,11 @@ CREATE TABLE titles
 	title VARCHAR (30)
 );
 
+-- Add emp_title_id foreign key to employees table, references titles table.
 ALTER TABLE employees
 ADD FOREIGN KEY (emp_title_id) REFERENCES titles(title_id);
 
+-- Create salaries table with emp_no foreign key, references employees table.
 CREATE TABLE salaries
 (
 	emp_no VARCHAR (10),
@@ -27,6 +31,8 @@ CREATE TABLE salaries
 	salary MONEY
 );
 
+-- Create dept_managers junction table with emp_no foreign key, references employees table.
+-- Wait on dept_no foreign key.
 CREATE TABLE dept_managers
 (
 	dept_no VARCHAR (7),
@@ -34,6 +40,7 @@ CREATE TABLE dept_managers
 	FOREIGN KEY (emp_no) REFERENCES employees(emp_no)
 )
 
+-- Create departments table with dept_no primary key.
 CREATE TABLE departments
 (
 	dept_no VARCHAR (7),
@@ -41,9 +48,11 @@ CREATE TABLE departments
 	dept_name VARCHAR (30)
 );
 
+-- Add dept_no foreign key, references departments table.
 ALTER TABLE dept_managers
 ADD FOREIGN KEY (dept_no) REFERENCES departments (dept_no);
 
+-- Create dept_emp junction table with foreign keys to employees and departments tables.
 CREATE TABLE dept_emp
 (
 	emp_no VARCHAR (10),

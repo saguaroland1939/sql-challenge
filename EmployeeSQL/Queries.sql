@@ -16,6 +16,7 @@ FROM employees
 WHERE EXTRACT(YEAR FROM employees.hire_date) = 1986;
 
 
+
 -- Lists highest-paid manager in each department with relevant information:
 --    Joins employees, departments, dept_managers, and salaries tables.
 --    Uses GROUP BY, ORDER BY, AND DISTINCT ON to select manager with highest salary per department.
